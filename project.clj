@@ -4,6 +4,7 @@
   :min-lein-version "2.0.0"
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [compojure "1.3.1"]
+                 [ring/ring-jetty-adapter "1.2.2"]
                  [ring/ring-defaults "0.1.2"]
                  [environ "0.5.0"]
                  [buddy "0.2.3"]

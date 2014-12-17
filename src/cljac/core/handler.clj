@@ -1,9 +1,12 @@
 (ns cljac.core.handler
   (:require [compojure.core :refer :all]
+            [compojure.handler :refer [site]]
             [compojure.route :as route]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [ring.middleware.anti-forgery :refer [*anti-forgery-token*]]
             [ring.util.response :refer [redirect]]
+            [ring.adapter.jetty :as jetty]
+            [environ.core :refer [env]]
             [buddy.auth :refer [authenticated?]]
             [buddy.auth.backends.session :refer [session-backend]]
             [buddy.auth.middleware :refer [wrap-access-rules
@@ -57,3 +60,7 @@
         (wrap-authentication backend)
         (wrap-authorization backend)
         (wrap-defaults site-defaults))))
+
+(defn -main [& [port]]
+  (let [port (Integer. (or port (env :port) 5000))]
+    (jetty/run-jetty (site #'app) {:port port :join? false})))
