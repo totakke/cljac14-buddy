@@ -12,20 +12,45 @@
             [buddy.auth.middleware :refer [wrap-access-rules
                                            wrap-authentication
                                            wrap-authorization]]
-            [hiccup.core :refer [html]]))
+            [hiccup.core :refer [html]]
+            [hiccup.page :refer :all]))
 
-(defn admin
+(defn- frame
+  [& contents]
+  (html5
+   [:head
+    [:meta {:name "viewport" :content "width=device-width, initial-scale=1"}]
+    [:title "cljac14-buddy"]
+    (include-css "//cdn.jsdelivr.net/pure/0.5.0/pure-min.css")
+    (include-css "/css/main.css")]
+   [:body
+    [:div.wrapper
+     contents]]))
+
+(defn- index
+  []
+  (frame
+   [:h1 "Welcome to buddy example"]
+   [:a.pure-button {:href "/admin"} "To Secure Area"]))
+
+(defn- admin
   [req]
-  (str "Logged in as " (name (get-in req [:session :identity]))))
+  (frame
+   [:h1 "Logged in as " [:strong (name (get-in req [:session :identity]))]]
+   [:a.pure-button {:href "/"} "To Home"]
+   (if (authenticated? req)
+     [:a.pure-button.pure-button-primary {:href "/logout"} "Log out"])))
 
 (defn login-get
   [req]
-  (html
-   [:form {:method "post"}
-    [:input {:type "text" :name "username"}]
-    [:input {:type "password" :name "password"}]
-    [:input {:type "hidden" :name "__anti-forgery-token" :value *anti-forgery-token*}]
-    [:input {:type "submit"}]]))
+  (frame
+   [:h1 "Log in"]
+   [:form.pure-form {:method "post"}
+    [:fieldset
+     [:input {:type "text" :name "username" :placeholder "username"}]
+     [:input {:type "password" :name "password" :placeholder "password"}]
+     [:input {:type "hidden" :name "__anti-forgery-token" :value *anti-forgery-token*}]
+     [:button.pure-button.pure-button-primary {:type "submit"} "Log in"]]]))
 
 (defn login-post
   [req]
@@ -35,11 +60,11 @@
 
 (defn logout
   []
-  (-> (redirect "/login")
+  (-> (redirect "/")
       (assoc :session {})))
 
 (defroutes app-routes
-  (GET "/" [] "Hello World")
+  (GET "/" [] (index))
   (GET "/admin" req (admin req))
   (GET "/login" req (login-get req))
   (POST "/login" req (login-post req))
