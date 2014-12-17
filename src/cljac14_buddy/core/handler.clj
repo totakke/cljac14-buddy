@@ -1,4 +1,4 @@
-(ns cljac.core.handler
+(ns cljac14_buddy.core.handler
   (:require [compojure.core :refer :all]
             [compojure.handler :refer [site]]
             [compojure.route :as route]

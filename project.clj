@@ -1,5 +1,5 @@
-(defproject cljac "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
+(defproject cljac14-buddy "0.1.0-SNAPSHOT"
+  :description "An example web application for buddy"
   :url "http://example.com/FIXME"
   :min-lein-version "2.0.0"
   :dependencies [[org.clojure/clojure "1.6.0"]
@@ -13,7 +13,7 @@
             [environ/environ.lein "0.2.1"]]
   :hooks [environ.leiningen.hooks]
   :uberjar-name "cljac14-buddy.jar"
-  :ring {:handler cljac.core.handler/app}
+  :ring {:handler cljac14_buddy.core.handler/app}
   :profiles {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
                                   [ring-mock "0.1.5"]]}
              :production {:dnv {:production true}}})

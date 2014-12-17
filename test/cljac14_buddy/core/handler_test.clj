@@ -1,7 +1,7 @@
-(ns cljac.core.handler-test
+(ns cljac14_buddy.core.handler-test
   (:require [clojure.test :refer :all]
             [ring.mock.request :as mock]
-            [cljac.core.handler :refer :all]))
+            [cljac14_buddy.core.handler :refer :all]))
 
 (deftest test-app
   (testing "main route"
