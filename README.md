@@ -1,19 +1,6 @@
-# cljac
+# cljac14-buddy
 
-FIXME
+[Clojure Advent Calendar 2014][cljac14]の16日目の記事『[buddyでユーザ認証][qiita-buddy]』で作成したデモのソースコードです。
 
-## Prerequisites
-
-You will need [Leiningen][] 2.0.0 or above installed.
-
-[leiningen]: https://github.com/technomancy/leiningen
-
-## Running
-
-To start a web server for the application, run:
-
-    lein ring server
-
-## License
-
-Copyright © 2014 FIXME
+[cljac14]: http://qiita.com/advent-calendar/2014/clojure
+[qiita-buddy]: http://qiita.com/totakke/items/30c0582ad9cdd6a34cba
