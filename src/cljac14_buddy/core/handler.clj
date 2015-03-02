@@ -9,9 +9,9 @@
             [environ.core :refer [env]]
             [buddy.auth :refer [authenticated?]]
             [buddy.auth.backends.session :refer [session-backend]]
-            [buddy.auth.middleware :refer [wrap-access-rules
-                                           wrap-authentication
+            [buddy.auth.middleware :refer [wrap-authentication
                                            wrap-authorization]]
+            [buddy.auth.accessrules :refer [wrap-access-rules]]
             [hiccup.core :refer [html]]
             [hiccup.page :refer :all]))
 
