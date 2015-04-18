@@ -7,7 +7,7 @@
                  [ring/ring-jetty-adapter "1.2.2"]
                  [ring/ring-defaults "0.1.2"]
                  [environ "0.5.0"]
-                 [buddy "0.4.1"]
+                 [buddy "0.5.1"]
                  [hiccup "1.0.5"]]
   :plugins [[lein-ring "0.8.13"]
             [environ/environ.lein "0.2.1"]]
